@@ -1,5 +1,6 @@
-# About
-Transform your habits into a rewarding orange collection game. Each completed habit earns you an orange, building streaks and maintaining momentum toward your goals. Clean interface, smooth animations, and satisfying progress tracking.
+## Zest Your Way to Better Habits 🍊
+
+> Transform your habits into a rewarding orange collection game. Each completed habit earns you an orange, building streaks and maintaining momentum toward your goals. Clean interface, smooth animations, and satisfying progress tracking.
 
 # Tech Stack
 
