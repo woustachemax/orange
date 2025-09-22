@@ -1,13 +1,15 @@
-import { useRouter } from "expo-router";
+import { useAuth } from "@/lib/authContext";
 import { Text, View } from "react-native";
 import '../global.css';
 
 export default function Index() {
-  const router = useRouter();
+  // const router = useRouter();
+  const {signOut} = useAuth()
   return (
-    <View className="flex-1 justify-center items-center">
+    <View className="bg-black flex-1 justify-center items-center">
       <Text className="text-red-500">Edit app/index.tsx to edit this screen.</Text>
-      <Text className="text-black" onPress={()=>router.replace('/auth')}>Click Here for Auth</Text>
+      <Text onPress={signOut}
+      className="text-gray-300 hover:text-[#b65916] m-4">Sign Out</Text>
     </View>
   );
 }
