@@ -9,6 +9,6 @@ export const account = new Account(client);
 
 export const database = new Databases(client);
 
-export const DB_ID = process.env.DB_ID!;
+export const DB_ID = process.env.EXPO_PUBLIC_DB_ID!;
 
-export const HABBIT_ID = process.env.HABBIT_ID!;
+export const HABBIT_ID = process.env.EXPO_PUBLIC_HABBIT_ID!;

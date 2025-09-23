@@ -1,5 +1,9 @@
+import { database, DB_ID, HABBIT_ID } from '@/lib/appwrite';
+import { useAuth } from '@/lib/authContext';
+import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ID } from 'react-native-appwrite';
 import { SegmentedButtons } from 'react-native-paper';
 
 const AddHabbit: React.FC = () => {
@@ -8,6 +12,9 @@ const AddHabbit: React.FC = () => {
   const [frequency, setFrequency] = useState<string>('daily');
   const [isTitleFocused, setIsTitleFocused] = useState<boolean>(false);
   const [isDescFocused, setIsDescFocused] = useState<boolean>(false);
+  const {user} = useAuth();
+  const router = useRouter();
+  const [error, setError] = useState<string>();
 
   const frequencyOptions = [
     { value: 'daily', label: 'Daily' },
@@ -15,14 +22,36 @@ const AddHabbit: React.FC = () => {
     { value: 'monthly', label: 'Monthly' }
   ];
 
-  const handleAddHabit = (): void => {
-    console.log({ title, description, frequency });
+  const handleSubit = async () => {
+
+    if(!user) return;
+    try{
+    await database.createDocument(DB_ID, HABBIT_ID, ID.unique(),{
+      user_id: user.$id,
+      title,
+      description, 
+      frequency,
+      // $databaseId: ,
+      streak_count: 0,
+      last_completed: new Date().toISOString(),
+      $createdAt: new Date().toISOString()
+
+    })
+
+    router.back()
+  }
+    catch(e){
+      if(e instanceof Error) setError(e.message)
+      else{
+        setError('An unexpected Error occured!')
+      }
+    }
   };
 
   return (
     <View className="bg-black flex-1 px-16 justify-center">
       <View className="items-center mb-8">
-        <Text className="text-[#b65916] text-2xl font-bold">
+        <Text className="text-white text-2xl font-bold">
           Plant🌱
         </Text>
       </View>
@@ -73,7 +102,7 @@ const AddHabbit: React.FC = () => {
           onValueChange={setFrequency}
           buttons={frequencyOptions}
           style={{
-            backgroundColor: '#1f2937',
+            backgroundColor: 'black',
             borderRadius: 25,
           }}
           theme={{
@@ -86,9 +115,13 @@ const AddHabbit: React.FC = () => {
         />
       </View>
 
+      {error &&(
+        <Text className='text-orange-200 font-bold mb-8 italic'>{error}</Text>
+      )}
+
       <TouchableOpacity 
         className="bg-[#b65916] rounded-full py-4 mb-4 active:bg-[#a04d12]"
-        onPress={handleAddHabit}
+        onPress={handleSubit}
       >
         <Text className="text-white text-center text-lg font-semibold">
           Plant Habit
