@@ -55,7 +55,7 @@ export function AuthScreen() {
     >
       <View className="flex-1 px-16 justify-center">
         <View className="items-center mb-2">
-          <Text className="text-[#b65916] text-2xl font-bold">
+          <Text className="text-orange-600 text-2xl font-bold">
             {isSignUp ? 'Get Juiced 🍊' : 'Squeeze Back In 🍊'}
           </Text>
         </View>
@@ -71,9 +71,9 @@ export function AuthScreen() {
               autoCapitalize="none"
               keyboardType="email-address"
               placeholder="sid@text.com"
-              placeholderTextColor="#666"
-              className={`bg-black border-2 rounded-full px-4 py-3 text-white text-base ${
-                isEmailFocused ? 'border-[#b65916]' : 'border-gray-600'
+              placeholderTextColor="gray"
+              className={`bg-white border-2 rounded-full px-4 py-3 text-black text-base ${
+                isEmailFocused ? 'border-orange-600' : 'border-gray-200'
               }`}
             />
           </View>
@@ -91,10 +91,10 @@ export function AuthScreen() {
               onBlur={() => setIsPasswordFocused(false)}
               autoCapitalize="none"
               placeholder="* * * * * *"
-              placeholderTextColor="#666"
+              placeholderTextColor="gray"
               secureTextEntry
-              className={`bg-black border-2 rounded-full px-4 py-3 text-white text-base ${
-                isPasswordFocused ? 'border-[#b65916]' : 'border-gray-600'
+              className={`bg-white border-2 rounded-full px-4 py-3 text-black text-base ${
+                isPasswordFocused ? 'border-orange-600' : 'border-gray-200'
               }`}
             />
           </View>
@@ -105,7 +105,7 @@ export function AuthScreen() {
         )}
 
         <TouchableOpacity 
-          className="bg-[#b65916] rounded-full py-4 mb-8 active:bg-[#a04d12]"
+          className="bg-orange-600 rounded-full py-4 mb-8 active:bg-[#a04d12]"
           onPress={handleAuth}
         >
           <Text className="text-white text-center text-lg font-semibold">
@@ -114,7 +114,7 @@ export function AuthScreen() {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={handleSwitchMode} className="active:opacity-70">
-          <Text className="text-[#b65916] text-center text-base">
+          <Text className="text-orange-600 text-center text-base">
             {isSignUp
               ? 'Already have an account? Sign In'
               : "Don't have an account? Sign Up"}

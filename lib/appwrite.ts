@@ -12,3 +12,8 @@ export const database = new Databases(client);
 export const DB_ID = process.env.EXPO_PUBLIC_DB_ID!;
 
 export const HABBIT_ID = process.env.EXPO_PUBLIC_HABBIT_ID!;
+
+export interface realTimeResponse {
+    events: string[],
+    payload: any,
+}

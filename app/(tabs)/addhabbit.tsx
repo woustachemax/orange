@@ -66,9 +66,9 @@ const AddHabbit: React.FC = () => {
             onBlur={() => setIsTitleFocused(false)}
             autoCapitalize="none"
             placeholder="What do you wanna pickup?"
-            placeholderTextColor="#666"
-            className={`bg-black border-2 rounded-full px-4 py-3 text-white text-base ${
-              isTitleFocused ? 'border-[#b65916]' : 'border-gray-600'
+            placeholderTextColor="gray"
+            className={`bg-white border-2 rounded-full px-4 py-3 text-black text-base ${
+              isTitleFocused ? 'border-orange-600' : 'border-gray-200'
             }`}
           />
         </View>
@@ -84,11 +84,11 @@ const AddHabbit: React.FC = () => {
             onBlur={() => setIsDescFocused(false)}
             autoCapitalize="none"
             placeholder="Why does this matter to you?"
-            placeholderTextColor="#666"
+            placeholderTextColor="gray"
             multiline
             numberOfLines={3}
-            className={`bg-black border-2 rounded-full px-4 py-3 text-white text-base ${
-              isDescFocused ? 'border-[#b65916]' : 'border-gray-600'
+            className={`bg-white border-2 rounded-full px-4 py-3 text-black text-base ${
+              isDescFocused ? 'border-orange-600' : 'border-gray-200'
             }`}
             style={{ textAlignVertical: 'top' }}
           />
@@ -102,12 +102,12 @@ const AddHabbit: React.FC = () => {
           onValueChange={setFrequency}
           buttons={frequencyOptions}
           style={{
-            backgroundColor: 'black',
+            backgroundColor: 'white',
             borderRadius: 25,
           }}
           theme={{
             colors: {
-              secondaryContainer: '#b65916',
+              secondaryContainer: '#ea580c',
               onSecondaryContainer: '#ffffff',
               onSurface: '#d1d5db',
             }
@@ -120,7 +120,7 @@ const AddHabbit: React.FC = () => {
       )}
 
       <TouchableOpacity 
-        className="bg-[#b65916] rounded-full py-4 mb-4 active:bg-[#a04d12]"
+        className="bg-orange-600 rounded-full py-4 mb-4 active:bg-[#a04d12]"
         onPress={handleSubit}
       >
         <Text className="text-white text-center text-lg font-semibold">
@@ -129,7 +129,7 @@ const AddHabbit: React.FC = () => {
       </TouchableOpacity>
 
       <TouchableOpacity className="active:opacity-70">
-        <Text className="text-[#b65916] text-center text-base">
+        <Text className="text-orange-600 text-center text-base">
           Cancel
         </Text>
       </TouchableOpacity>
